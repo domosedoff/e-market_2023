@@ -1,3 +1,4 @@
+import "bootstrap/dist/css/bootstrap.min.css";
 import { createContext } from "react";
 import ReactDOMClient from "react-dom/client";
 import App from "./App";

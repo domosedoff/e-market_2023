@@ -11,7 +11,10 @@ export default class DeviceStore {
     this._brands = [
       { id: 1, name: "Samsung" },
       { id: 2, name: "Toshiba" },
-      { id: 3, name: "Panasonic" },
+      { id: 3, name: "Lenovo" },
+      { id: 4, name: "Sony" },
+      { id: 5, name: "Apple" },
+      { id: 6, name: "Asus" },
     ];
 
     this._devices = [
@@ -20,7 +23,7 @@ export default class DeviceStore {
         name: "apple",
         price: 5000,
         rating: 0,
-        img: "0d84eed4-252a-422f-b712-41f92abe7963.jpg",
+        img: "https://klike.net/uploads/posts/2022-09/1663135202_a.jpg",
       },
 
       {
@@ -28,7 +31,7 @@ export default class DeviceStore {
         name: "sony",
         price: 5000,
         rating: 0,
-        img: "4ef3ad5e-28e6-4472-bc21-df22afd27f34.jpg",
+        img: "https://klike.net/uploads/posts/2022-09/1663135202_a.jpg",
       },
 
       {
@@ -36,9 +39,35 @@ export default class DeviceStore {
         name: "Panasonic",
         price: 3000,
         rating: 0,
-        img: "3fff6f66-bdb9-4ce6-be2f-7109d6f82bda.jpg",
+        img: "https://klike.net/uploads/posts/2022-09/1663135202_a.jpg",
+      },
+
+      {
+        id: 9,
+        name: "Lg",
+        price: 3000,
+        rating: 0,
+        img: "https://klike.net/uploads/posts/2022-09/1663135202_a.jpg",
+      },
+
+      {
+        id: 10,
+        name: "PanasOanic",
+        price: 3000,
+        rating: 0,
+        img: "https://klike.net/uploads/posts/2022-09/1663135202_a.jpg",
+      },
+
+      {
+        id: 11,
+        name: "Panasonic",
+        price: 3000,
+        rating: 0,
+        img: "https://klike.net/uploads/posts/2022-09/1663135202_a.jpg",
       },
     ];
+    this._selectedType = {};
+    this._selectedBrand = {};
 
     makeAutoObservable(this);
   }
@@ -53,6 +82,14 @@ export default class DeviceStore {
     this._devices = devices;
   }
 
+  setSelectedType(type) {
+    this._selectedType = type;
+  }
+
+  setSelectedBrand(brand) {
+    this._selectedBrand = brand;
+  }
+
   get types() {
     return this._types;
   }
@@ -62,5 +99,13 @@ export default class DeviceStore {
   }
   get devices() {
     return this._devices;
+  }
+
+  get selectedType() {
+    return this._selectedType;
+  }
+
+  get selectedBrand() {
+    return this._selectedBrand;
   }
 }
