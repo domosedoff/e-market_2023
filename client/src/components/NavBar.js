@@ -13,6 +13,11 @@ const NavBar = observer(() => {
   const { user } = useContext(Context);
   const navigate = useNavigate();
 
+  const logOut = () => {
+    user.setUser({});
+    user.setIsAuth(false);
+  };
+
   return (
     <Navbar bg="dark" variant="dark">
       <Container>
@@ -28,10 +33,7 @@ const NavBar = observer(() => {
             >
               Админ панель
             </Button>
-            <Button
-              variant={"outline-light"}
-              onClick={() => navigate(ADMIN_ROUTE)}
-            >
+            <Button variant={"outline-light"} onClick={() => logOut()}>
               Выйти
             </Button>
           </Nav>

@@ -11,7 +11,7 @@ const Auth = observer(() => {
   const { user } = useContext(Context);
   const location = useLocation();
   const navigate = useNavigate();
-  console.log("navigate", navigate);
+  // console.log("navigate", navigate);
   const isLogin = location.pathname === LOGIN_ROUTE;
 
   const [email, setEmail] = useState(``);
@@ -26,7 +26,7 @@ const Auth = observer(() => {
         data = await registration(email, password);
       }
       user.setUser(user);
-      user.setAuth(true);
+      user.setIsAuth(true);
       navigate(SHOP_ROUTE);
     } catch (e) {
       alert(e.response.data.message);

@@ -1,11 +1,32 @@
 import { Container, Col, Row } from "react-bootstrap";
-
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import TypeBar from "../components/TypeBar";
 import BrandBar from "../components/BrandBar";
 import DeviceList from "../components/DeviceList";
+import { observer } from "mobx-react-lite";
+import { Context } from "..";
+import { fetchBrands, fetchTypes, fetchDevices } from "../http/deviceApi";
+import Pages from "../components/Pages";
 
-const Shop = () => {
+const Shop = observer(() => {
+  const { device } = useContext(Context);
+  useEffect(() => {
+    fetchTypes().then((data) => device.setTypes(data));
+    fetchBrands().then((data) => device.setBrands(data));
+  }, []);
+
+  useEffect(() => {
+    fetchDevices(
+      device.selectedType.id,
+      device.selectedBrand.id,
+      device.Page,
+      2
+    ).then((data) => {
+      device.setDevices(data.rows);
+      device.setTotalCount(data.count);
+    });
+  }, [device.selectedType, device.selectedBrand]);
+
   return (
     <Container>
       <Row className="mt-2 ">
@@ -18,10 +39,11 @@ const Shop = () => {
             <BrandBar />
           </div>
           <DeviceList />
+          <Pages />
         </Col>
       </Row>
     </Container>
   );
-};
+});
 
 export default Shop;

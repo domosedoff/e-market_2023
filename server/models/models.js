@@ -43,7 +43,7 @@ const Rating = sequelize.define("rating", {
 const DeviceInfo = sequelize.define("deviceInfo", {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
   title: { type: DataTypes.INTEGER, allowNull: false },
-  desc: { type: DataTypes.STRING, allowNull: false },
+  description: { type: DataTypes.STRING, allowNull: false },
 });
 
 const TypeBrand = sequelize.define("type_brand", {
